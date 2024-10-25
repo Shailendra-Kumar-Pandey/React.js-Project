@@ -5,11 +5,11 @@ export default function TextForm(props) {
         // console.log("text" + text);
         let newText = text.toUpperCase();
         setText(newText);
-    }
+    };
     const clearText=()=>{
         let clear = "";
         setText(clear);
-    }
+    };
     // const itelicFont =()=>{
     //     let itelic = <i>{text}</i>
     //     setText(itelic);
@@ -17,14 +17,23 @@ export default function TextForm(props) {
     const lowCase=()=>{
         let lowerCase = text.toLowerCase();
         setText(lowerCase);
-    }
+    };
+    const copyText=()=>{
+        let copytext = document.getElementById("myBox");
+        copytext.select();
+        navigator.clipboard.writeText(copytext.value);
+    };
     const onchangeText=(e)=>{
         // console.log("setText");
-        setText(e.target.value)
-    }
+        setText(e.target.value);
+    };
     const toggleItalic = () => {
         setIsItalic(prev => !prev);
     };
+    const clearExtra =()=>{
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "));
+    }
     const [text, setText] = useState("Enter the text below");
     const [isItalic, setIsItalic] = useState(false);
     // text ="new test";//wronge way to change the state
@@ -42,6 +51,8 @@ export default function TextForm(props) {
         <button className="btn btn-primary mx-2" onClick={toggleItalic}>
                     {isItalic ? "Remove Italic" : "Convert to Italic Font"}
                 </button>
+        <button className="btn btn-dark mx-2" id="myBox" onClick={copyText}>Copy Text</button>
+        <button className="btn btn-primary mx-2" onClick={clearExtra}>Extra Space Set</button>
         {/* <button className="btn btn-primary mx-2" onClick={itelicFont}>Convert to Itailic Font</button> */}
 
         </div>
