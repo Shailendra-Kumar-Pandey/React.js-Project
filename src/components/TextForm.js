@@ -85,9 +85,16 @@ export default function TextForm(props) {
         style={{ color: props.mode === "light" ? "black" : "white" }}
       >
         <h1> Your text Summary</h1>
-        <p>
+        {/* <p>
           {text.split(" ").length} words and {text.length} characters
-        </p>
+        </p> */} 
+        <p>
+          {text.trim() === "" 
+            ? "0 words and 0 characters" 
+            : `${text.split(" ").length} words and ${text.length} characters`}
+        </p> 
+         {/* solve the debug */}
+
         <p>{0.008 * text.split(" ").length} Minutes read</p>
         <h2>Preview</h2>
         <p style={{ fontStyle: isItalic ? "italic" : "normal" }}>
