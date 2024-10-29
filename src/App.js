@@ -6,6 +6,13 @@ import TextForm from "./components/TextForm";
 import React from 'react';
 import Alert from './components/Alert'
 
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from "react-router-dom";
+
 
 // let name = " Shailendra Kumar Pandey"
 function App() {
@@ -34,12 +41,21 @@ function App() {
   }
   return (
     <>
-      <Navbar title="TextUtils" about="About" mode={mode} toggleMode ={toggleMode}/>
+    {/* <Router> */}
+      <Navbar title="TextUtils" about="About" mode={mode} toggleMode ={toggleMode} setMode={setMode} showAlert={showAlert}/>
       <Alert alert={alert} />
       <div className="container my-3">
+      {/* <Switch>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/"> */}
+              <TextForm showAlert={showAlert} heading="Enter the text Analyze"  mode={mode} />
+              {/* </Route>
+        </Switch> */}
         {/* <About/> */}
-        <TextForm showAlert={showAlert} heading="Enter the text Analyze"  mode={mode} />
       </div>
+      {/* </Router> */}
     </>
   );
 }
