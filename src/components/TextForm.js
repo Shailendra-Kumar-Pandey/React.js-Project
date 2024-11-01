@@ -86,7 +86,7 @@ export default function TextForm(props) {
       >
         <h1> Your text Summary</h1>
         <p>
-          {text.split(" ").filter((e)=>{return e.length !== 0}).length} words and {text.length} characters
+          {text.split(/\s+/).filter((e)=>{return e.length !== 0}).length} words and {text.length} characters
         </p>  {/* solve the problem space errer */}
         {/* <p>
           {text.trim() === "" 
