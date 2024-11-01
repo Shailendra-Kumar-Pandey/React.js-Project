@@ -52,7 +52,7 @@ export default function TextForm(props) {
           <textarea
             className="form-control"
             style={{
-              backgroundColor: props.mode === "dark" ? "gray" : "white",
+              backgroundColor: props.mode === "dark" ? "#f8f9faa6" : "white",
               color: props.mode === "light" ? "black" : "white",
             }}
             value={text}
@@ -61,22 +61,22 @@ export default function TextForm(props) {
             rows="8"
           ></textarea>
         </div>
-        <button className="btn btn-dark mx-2" onClick={upCase}>
+        <button disabled={text.length===0} className="btn btn-dark mx-2 my-2" onClick={upCase}>
           Convert to UperCase
         </button>
-        <button className="btn btn-dark mx-2" onClick={lowCase}>
+        <button disabled={text.length===0} className="btn btn-dark mx-2 my-2" onClick={lowCase}>
           Convert to LowerCase
         </button>
-        <button className="btn btn-dark mx-2" onClick={clearText}>
+        <button disabled={text.length===0} className="btn btn-dark mx-2 my-2" onClick={clearText}>
           Clear Text
         </button>
-        <button className="btn btn-dark mx-2" onClick={toggleItalic}>
+        <button disabled={text.length===0} className="btn btn-dark mx-2 my-2" onClick={toggleItalic}>
           {isItalic ? "Remove Italic" : "Convert to Italic Font"}
         </button>
-        <button className="btn btn-dark mx-2" id="myBox" onClick={copyText}>
+        <button disabled={text.length===0} className="btn btn-dark mx-2 my-2" id="myBox" onClick={copyText}>
           Copy Text
         </button>
-        <button className="btn btn-dark mx-2" onClick={clearExtra}>
+        <button disabled={text.length===0} className="btn btn-dark mx-2 my-2" onClick={clearExtra}>
           Extra Space Set
         </button>
       </div>
@@ -85,17 +85,17 @@ export default function TextForm(props) {
         style={{ color: props.mode === "light" ? "black" : "white" }}
       >
         <h1> Your text Summary</h1>
-        {/* <p>
-          {text.split(" ").length} words and {text.length} characters
-        </p> */} 
         <p>
+          {text.split(" ").filter((e)=>{return e.length !== 0}).length} words and {text.length} characters
+        </p>  {/* solve the problem space errer */}
+        {/* <p>
           {text.trim() === "" 
             ? "0 words and 0 characters" 
             : `${text.split(" ").length} words and ${text.length} characters`}
-        </p> 
+        </p>  */}
          {/* solve the debug */}
 
-        <p>{0.008 * text.split(" ").length} Minutes read</p>
+        <p>{0.008 * text.split(" ").filter((e)=>{return e.length !== 0}).length} Minutes read</p>
         <h2>Preview</h2>
         <p id ="itelicdata" style={{ fontStyle: isItalic ? "italic" : "normal" }}>
           {text.length > 0
